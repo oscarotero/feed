@@ -26,6 +26,7 @@ export default async function getFeed(): Promise<JsonFeed> {
         id: entry.id,
         url: url,
         title: entry.title?.value,
+        description: entry.description?.value,
         date_published: entry.publishedRaw,
       };
     }
