@@ -1,7 +1,7 @@
-import { listenAndServe } from "https://deno.land/std@0.117.0/http/server.ts";
+import { serve } from "https://deno.land/std@0.117.0/http/server.ts";
 import heydesigner from "./heydesigner.ts";
 
-async function handleRequest(request: Request) {
+serve(async (request) => {
   const { pathname } = new URL(request.url);
   if (pathname.startsWith("/heydesigner")) {
     const feed = await heydesigner();
@@ -14,8 +14,6 @@ async function handleRequest(request: Request) {
   }
 
   return new Response("Not found", { status: 404 });
-}
+}, { addr: ":8080" });
 
 console.log("Listening on http://localhost:8080");
-
-await listenAndServe(":8080", handleRequest);
