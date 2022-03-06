@@ -8,7 +8,7 @@ serve(async (request) => {
 
     return new Response(JSON.stringify(feed), {
       headers: {
-        "content-type": "application/feed+json; charset=UTF-8",
+        "content-type": "application/rss+xml;charset=UTF-8",
       },
     });
   }
